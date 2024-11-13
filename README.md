@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="screenshot/logo.svg" alt="logo" width="150">
+  <img src="screenshot/radmon.png" alt="logo" width="150">
   <h1>RADIUS MONITOR V2</h1>
 </div>
 
