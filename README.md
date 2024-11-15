@@ -4,9 +4,9 @@
 </div>
 
 <div align="center">
-  <img alt="License" src="https://img.shields.io/github/license/Maizil41/RadiusMonitor?style=for-the-badge&logo=github">
-  <a target="_blank" href="https://github.com/Maizil41/RadiusMonitor/releases"><img src="https://img.shields.io/badge/Version-2.6--beta-blue?style=for-the-badge&logo=github"></a>
-  <a target="_blank" href="https://github.com/Maizil41/Mutiara-Wrt/releases"><img src="https://img.shields.io/github/downloads/Maizil41/RadiusMonitor/total?style=for-the-badge&logo=github"></a>
+  <img alt="License" src="https://img.shields.io/github/license/Maizil41/RadMonv2?style=for-the-badge&logo=github">
+  <a target="_blank" href="https://github.com/Maizil41/RadMonv2/releases"><img src="https://img.shields.io/badge/Version-2.0--beta-blue?style=for-the-badge&logo=github"></a>
+  <a target="_blank" href="https://github.com/Maizil41/RadMonv2/releases"><img src="https://img.shields.io/github/downloads/Maizil41/RadMonv2/total?style=for-the-badge&logo=github"></a>
 </div>
 <hr/>
 <p align="center">
@@ -16,3 +16,34 @@
 </p>
 <hr/>
 
+
+> [!WARNING]
+>
+> - This application uses the [Mikhmon V3](https://github.com/laksa19/mikhmonv3) template
+>
+> - This application was created for novice hotspot entrepreneurs who do not yet have a MikroTik
+> 
+> - This application does not intend to harm any party
+
+Credit
+---
+<ul>
+  <li>Author : <a href="https://github.com/maizil41" target="_blank">Maizil</a></li>
+</ul>
+
+<ul>
+  <li>Template : <a href="https://github.com/laksa19/mikhmonv3" target="_blank">Mikhmon V3</a></li>
+</ul>
+
+
+Screenshot
+---
+* Login
+<p align="center">
+    <img src="/screenshot/login.png">
+</p>
+
+* Dashboard
+<p align="center">
+    <img src="/screenshot/dash.png">
+</p>
