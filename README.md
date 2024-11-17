@@ -29,6 +29,28 @@
 > 
 > - This application does not intend to harm any party
 
+Packages Needed
+---
+- MySQL
+- Freeradius3
+- Coova-Chilli `(For Loginpage)`
+- php-cli, php-mod-mysqli, php-mod-pdo-mysql, php-mod-gd, php-mod-xml, php-mod-filter, php-mod-curl
+- iptables-nft `(firewall4)`
+- iptables-mod-hashlimit
+
+Features
+---
+- Add, Edit & Remove Plans
+- Add, Edit & Remove Bandwidth
+- Add & Remove Users
+- Add & Remove Batch
+- Mac Binding Support
+- Disconnect Users
+- Testing Users using Radtest
+- Income Calculation
+- Database Restore & Backup
+- QRCode Tickets support
+
 Credit
 ---
 <ul>
