@@ -46,9 +46,7 @@ Features
 - Add & Remove Batch
 - Mac Binding Support
 - Disconnect Users
-- Testing Users using Radtest
 - Income Calculation
-- Database Restore & Backup
 - QRCode Tickets support
 
 Credit
