@@ -1,0 +1,179 @@
+<?php
+/*
+*******************************************************************************************************************
+* Warning!!!, Tidak untuk diperjual belikan!, Cukup pakai sendiri atau share kepada orang lain secara gratis
+*******************************************************************************************************************
+* Author : @Maizil https://t.me/maizil41
+*******************************************************************************************************************
+* © 2024 Mutiara-Net By @Maizil
+*******************************************************************************************************************
+*/
+include('../include/head.html.php');
+?>
+
+<div id="sidenav" class="sidenav">
+<a href="../pages/dashboard.php" class="menu "><i class="fa fa-dashboard"></i> Dashboard</a>
+<!--hotspot-->
+<div class="dropdown-btn active"><i class="fa fa-wifi"></i> Hotspot
+<i class="fa fa-caret-down"></i>
+</div>
+<div class="dropdown-container">
+<!--users--> 
+<div class="dropdown-btn"><i class="fa fa-users"></i> Users<i class="fa fa-caret-down"></i>
+</div>
+<div class="dropdown-container">
+<a href="../hotspot/user.php" class=""> &nbsp;&nbsp;&nbsp;<i class="fa fa-list "></i> User List </a>
+<a href="../hotspot/adduser.php" class=""> &nbsp;&nbsp;&nbsp;<i class="fa fa-user-plus "></i> Add User </a>
+<a href="../hotspot/generate.php" class=""> &nbsp;&nbsp;&nbsp;<i class="fa fa-user-plus"></i> Generate </a>        
+</div>
+<!--profile-->
+<div class="dropdown-btn "><i class=" fa fa-pie-chart"></i> User Profile<i class="fa fa-caret-down"></i>
+</div>
+<div class="dropdown-container ">
+<a href="../hotspot/profile.php" class=""> &nbsp;&nbsp;&nbsp;<i class="fa fa-list "></i> Profile List </a>
+<a href="../hotspot/bandwidth.php" class=""> &nbsp;&nbsp;&nbsp;<i class="fa fa-hourglass "></i> Bandwidth List </a>
+</div>
+<!--active-->
+<a href="../hotspot/active.php" class="menu"><i class="fa fa-wifi"></i> Hotspot Active</a>
+<!--ip bindings-->
+<a href="../hotspot/binding.php" class="menu active"><i class="fa fa-address-book"></i> MAC Bindings</a>
+</div>
+<!--quick print-->
+<a href="../voucher/quick_print.php" class="menu"> <i class="fa fa-print"></i> Quick Print </a>
+<!--vouchers-->
+<a href="../voucher/voucher.php" class="menu"> <i class="fa fa-ticket"></i> Vouchers </a>
+<!--log-->
+<div class="dropdown-btn"><i class="fa fa-align-justify"></i> Log<i class="fa fa-caret-down"></i>
+</div>
+<div class="dropdown-container">
+<a href="../logs/hotspot.php" class=""> <i class="fa fa-wifi"></i> Hotspot Log </a>
+<a href="../logs/radius.php" class=""> <i class="fa fa-database"></i> Radius Log </a>
+</div>
+<!--system-->
+<a href="../pages/server.php" class="menu"> <i class="fa fa-server"></i> Status </a>
+<!--report-->
+<a href="../hotspot/report.php" class="menu"><i class="nav-icon fa fa-money"></i> Report</a>
+<!--settings-->
+<div class="dropdown-btn "><i class="fa fa-gear"></i> Settings 
+<i class="fa fa-caret-down"></i> &nbsp;
+</div>
+<div class="dropdown-container ">
+<a href="../pages/admin.php" class="menu"> <i class="fa fa-gear"></i> Admin Settings </a>
+<a href="../hotspot/hslogo.php" class="menu"> <i class="fa fa-upload"></i> Upload Logo </a>
+<a href="../voucher/template.php" class="menu"> <i class="fa fa-edit"></i> Template Setting </a>          
+</div>
+<!--about-->
+<a href="../pages/about.php" class="menu"><i class="fa fa-info-circle"></i> About</a>
+</div>
+
+<div id="main">  
+    <div id="loading" class="lds-dual-ring"></div>
+    <div class="main-container" style="display:none;">
+        <div class="row">
+            <div class="col-8">
+                <div class="card box-bordered">
+                    <div class="card-header">
+                        <h3>
+                            <i class="fa fa-user-plus"></i> Add Mac &nbsp; | &nbsp;
+                            <small id="loader" style="display: none;">
+                                <i class="fa fa-circle-o-notch fa-spin"></i> Processing...</i>
+                            </small>
+                            <?php if (isset($_GET['message'])): ?>
+                                <small id="message">
+                                    <?php echo htmlspecialchars($_GET['message']); ?>
+                                </small>
+                            <?php endif; ?>
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" role="form" action="../backend/addmac.php" id="addMacForm">
+                            <div class="mb-3">
+                                <a class="btn bg-warning" href="../hotspot/binding.php">
+                                    <i class="fa fa-close"></i> Close
+                                </a>
+                                <button type="submit" name="addMac" value="top" class="btn bg-primary">
+                                    <i class="fa fa-save"></i> Save
+                                </button>
+                            </div>
+
+                            <table class="table">
+                                <tr>
+                                    <td class="align-middle">Client Name</td>
+                                    <td>
+                                        <input class="form-control" type="text" autocomplete="off" id="clientName" name="clientName">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">Profile</td>
+                                    <td>
+                                        <select class="form-control" id="planDropup" name="planName" autocomplete="off" required>
+                                            <option value="">Select Profile</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>MAC Type</td>
+                                    <td>
+                                        <input type="radio" id="Select" name="typebp" value="Select" checked onclick="toggleMacInput()"> Select
+                                        <input type="radio" id="Manual" name="typebp" value="Manual" onclick="toggleMacInput()"> Manual
+                                    </td>
+                                </tr>
+                                <tr id="SelectMac">
+                                    <td class="align-middle">Select Mac</td>
+                                    <td>
+                                        <select id="macDropdown" name="macSelect" class="form-control" autocomplete="off">
+                                            <option value="">Select Mac</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr id="InputMac" style="display: none;">
+                                    <td class="align-middle">Input Mac</td>
+                                    <td>
+                                        <input type="text" id="macManualInput" class="form-control" name="macManual" placeholder="Input Mac Address" maxlength="17" autocomplete="on">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">WhatsApp</td>
+                                    <td>
+                                        <input class="form-control" type="tel" autocomplete="off" id="Whatsapp_number" name="Whatsapp_number">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">Telegram</td>
+                                    <td>
+                                        <input class="form-control" type="text" id="comment" autocomplete="off" name="comment" title="No special characters">
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            <i class="fa fa-book"></i> Read Me
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                    <table class="table table-bordered">
+                    <td colspan="2">
+                        <ul>
+                            <li>Client Name : Nama pelanggan.</li>
+                            <li>Mac Type : Tipe Mac (Input manual atau pilih dari dropdown).</li>
+                            <li>WhatsApp : Nomor whatsapp pelanggan.</li>
+                            <li>Telegram : Id telegram pelanggan</li>
+                        </ul>
+                        <p><b>NOTES:</b> Yang wajib diisi hanya Mac Address dan Profile, sisanya opsional.<br>Abaikan jika tidak ingin diisi.</p>
+                        </td></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="../js/radmon-ui.<?php echo $theme; ?>.min.js"></script>
+<script src="../js/radmon.js"></script>
+<script src="../plugins/add.mac.js"></script>
+</body>
+</html>
