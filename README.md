@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="screenshot/radmon.png" alt="logo" width="150">
+  <img src="img/radmon.png" alt="logo" width="150">
   <h1>RADIUS MONITOR V2</h1>
 </div>
 
@@ -64,10 +64,10 @@ Screenshot
 ---
 * Login
 <p align="center">
-    <img src="/screenshot/login.png">
+    <img src="/img/login.png">
 </p>
 
 * Dashboard
 <p align="center">
-    <img src="/screenshot/dash.png">
+    <img src="/img/dash.png">
 </p>
