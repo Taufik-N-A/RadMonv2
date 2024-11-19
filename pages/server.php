@@ -107,7 +107,7 @@ include ("../backend/ipinfo.php");
                 <i class="fa fa-server"></i>
               </div>
               <div class="box-group-area">
-                <span> CPU Load : <span id="cpu-"> <?php echo $cpuValue; ?>% </span> Temp : <?php echo "$temp"; ?> <br /> Free Memory : <?php echo "$free"; ?> MiB <br /> Free HDD : <?php echo "$freehdd"; ?> <br />
+                <span> CPU Load : <span id="cpu-"> <?php echo $cpuValue; ?>% </span> Temp : <?php echo "$temp"; ?> <br /> Free Memory : <?php echo formatMemory($freeMemory['MB']); ?><br/> Free HDD : <?php echo "$freehdd"; ?> <br />
               </div>
             </div>
           </div>
