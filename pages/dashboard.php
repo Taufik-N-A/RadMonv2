@@ -107,7 +107,7 @@ include ("../backend/auth_log.php");
               <div class="box-group-area">
                 <span >
                     CPU Load : <span id="cpu-load"><?php echo $cpuValue; ?>%</span> Temp : <?php echo "$temp"; ?><br/>
-                    Free Memory  : <?php echo "$free"; ?> MiB<br/>
+                    Free Memory : <?php echo formatMemory($freeMemory['MB']); ?><br/>
                     Free HDD : <?php echo "$freehdd"; ?><br/>
                 </div>
               </div>
