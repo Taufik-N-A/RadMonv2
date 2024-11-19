@@ -52,10 +52,6 @@ function getMemoryInfo() {
     return $memInfo;
 }
 
-function convertToMB($valueInKB) {
-    return $valueInKB / 1024;
-}
-
 function calculatePercentage($part, $total) {
     if ($total == 0) {
         return 0;
@@ -63,10 +59,28 @@ function calculatePercentage($part, $total) {
     return ($part / $total) * 100;
 }
 
+function convertToMBandGB($valueInKB) {
+    $valueInMB = $valueInKB / 1024;
+    $valueInGB = $valueInMB / 1024;
+    
+    return [
+        'MB' => $valueInMB,
+        'GB' => $valueInGB
+    ];
+}
+
 $memoryInfo = getMemoryInfo();
 
-$total = number_format(convertToMB($memoryInfo['MemTotal']['value']), 2);
-$free = number_format(convertToMB($memoryInfo['MemFree']['value']), 2);
+$totalMemory = convertToMBandGB($memoryInfo['MemTotal']['value']);
+$freeMemory = convertToMBandGB($memoryInfo['MemFree']['value']);
+
+function formatMemory($valueInMB) {
+    if ($valueInMB < 1024) {
+        return number_format($valueInMB, 2) . " MiB";
+    } else {
+        return number_format($valueInMB / 1024, 2) . " GiB";
+    }
+}
 
 $rootInfo = shell_exec('df -h /');
 
