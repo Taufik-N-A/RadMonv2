@@ -85,7 +85,7 @@ include('../include/head.html.php');
                         </h3>
                     </div>
                     <div class="card-body">
-                        <form method="post" role="form" action="../backend/addprofile.php" id="addUserForm">
+                        <form method="post" role="form" action="../backend/addprofile.php" id="addprofile">
                             <div>
                                 <input type="hidden" id="planTimeBank" name="planTimeBank">
                                 <input type="hidden" id="profileTimeBank" name="profileTimeBank" value="0">
@@ -118,23 +118,30 @@ include('../include/head.html.php');
                                         </div>
                                     </td>
                                 </tr>
+                                
                                 <tr>
                                     <td>Shared User</td>
                                     <td><input type="number" class="form-control" id="shared" name="shared" value="1" min="1" required></td>
                                 </tr>
+                                
                                 <tr>
-                                    <td>Limit Type</td>
+                                    <td>Profile Type</td>
                                     <td>
-                                        <select id="Type" name="Type" class="form-control" onchange="updateLimitType()">
-                                            <option value="">Unlimited</option>
-                                            <option id="Time_Limit" name="limit_type" value="Time_Limit">Time Limit</option>
-                                            <option id="Data_Limit" name="limit_type" value="Data_Limit">Data Limit</option>
-                                            <option id="Both_Limit" name="limit_type" value="Both_Limit">Both Limit</option>
-                                        </select>
+                                        <input type="radio" id="Unlimited" name="typebp" value="Unlimited" checked> Unlimited
+                                        <input type="radio" id="Limited" name="typebp" value="Limited"> Limited
                                     </td>
                                 </tr>
-
-                                <!-- Time Limit -->
+                                    
+ 
+                                <tr style="display:none;" id="Type">
+                                    <td class="align-middle">Limit Type</td>
+                                    <td>
+                                        <input type="radio" id="Time_Limit" name="limit_type" value="Time_Limit" checked> Time Limit
+                                        <input type="radio" id="Data_Limit" name="limit_type" value="Data_Limit"> Data Limit
+                                        <input type="radio" id="Both_Limit" name="limit_type" value="Both_Limit"> Both Limit
+                                    </td>
+                                </tr>
+                                
                                 <tr style="display:none;" id="TimeLimit">
                                     <td class="align-middle">Duration</td>
                                     <td>
@@ -153,7 +160,6 @@ include('../include/head.html.php');
                                     </td>
                                 </tr>
 
-                                <!-- Validity Limit -->
                                 <tr style="display:none;" id="ValidityLimit">
                                     <td class="align-middle">Validity</td>
                                     <td>
@@ -172,7 +178,6 @@ include('../include/head.html.php');
                                     </td>
                                 </tr>
 
-                                <!-- Data Limit -->
                                 <tr style="display:none;" id="DataLimit">
                                     <td class="align-middle">Data Limit</td>
                                     <td>
@@ -189,6 +194,7 @@ include('../include/head.html.php');
                                         </div>
                                     </td>
                                 </tr>
+                                
                                 <tr>
                                     <td>Rate limit</td>
                                     <td>

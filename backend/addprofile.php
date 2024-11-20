@@ -33,6 +33,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $bw_name = isset($_POST['bw_name']) ? trim($_POST['bw_name']) : '';
         $bw_id = isset($_POST['bw_id']) ? trim($_POST['bw_id']) : '';
         
+        $profileType = isset($_POST['typebp']) ? trim($_POST['typebp']) : '';
+        $limitType = isset($_POST['limit_type']) ? trim($_POST['limit_type']) : '';
+        
+        if ($profileType === 'Unlimited') {
+            $planTimeBank = '';
+            $durasi = '';
+            $bw = '';
+        } elseif ($profileType === 'Limited') {
+            if ($limitType === 'Time_Limit') {
+                $bw = '';
+            } elseif ($limitType === 'Data_Limit') {
+                $planTimeBank = '';
+                $durasi = '';
+            }
+        }
+        
         if (empty($planName)) {
             throw new Exception('Plan name cannot be empty.');
         }
