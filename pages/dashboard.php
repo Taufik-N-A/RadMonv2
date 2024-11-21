@@ -54,6 +54,13 @@ include ("../backend/auth_log.php");
 </div>
 <!--system-->
 <a href="../pages/server.php" class="menu"> <i class="fa fa-server"></i> Status </a>
+<!--billing-->
+<div class="dropdown-btn "><i class=" fa fa-credit-card"></i> Billing<i class="fa fa-caret-down"></i>
+</div>
+<div class="dropdown-container ">
+<a href="../billing/request.php" class=""> <i class="fa fa-plus-circle "></i> Topup Request </a>
+<a href="../billing/user.php" class=""> <i class="fa fa-user "></i> Client List </a>
+</div>
 <!--report-->
 <a href="../hotspot/report.php" class="menu"><i class="nav-icon fa fa-money"></i> Report</a>
 <!--settings-->

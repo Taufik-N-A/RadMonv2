@@ -9,10 +9,11 @@
 *******************************************************************************************************************
 */
 include('../include/head.html.php');
+include('../include/billing.request.php');
 ?>
 
 <div id="sidenav" class="sidenav">
-<a href="../pages/dashboard.php" class="menu "><i class="fa fa-dashboard"></i> Dashboard</a>
+<a href="../pages/dashboard.php" class="menu"><i class="fa fa-dashboard"></i> Dashboard</a>
 <!--hotspot-->
 <div class="dropdown-btn"><i class="fa fa-wifi"></i> Hotspot
 <i class="fa fa-caret-down"></i>
@@ -30,7 +31,7 @@ include('../include/head.html.php');
 <div class="dropdown-btn "><i class=" fa fa-pie-chart"></i> User Profile<i class="fa fa-caret-down"></i>
 </div>
 <div class="dropdown-container ">
-<a href="../hotspot/profile.php" class=" "> &nbsp;&nbsp;&nbsp;<i class="fa fa-list "></i> Profile List </a>
+<a href="../hotspot/profile.php" class=""> &nbsp;&nbsp;&nbsp;<i class="fa fa-list "></i> Profile List </a>
 <a href="../hotspot/bandwidth.php" class=""> &nbsp;&nbsp;&nbsp;<i class="fa fa-hourglass "></i> Bandwidth List </a>
 </div>
 <!--active-->
@@ -39,7 +40,7 @@ include('../include/head.html.php');
 <a href="../hotspot/binding.php" class="menu"><i class="fa fa-address-book"></i> MAC Bindings</a>
 </div>
 <!--quick print-->
-<a href="../voucher/quick_print.php" class="menu active"> <i class="fa fa-print"></i> Quick Print </a>
+<a href="../voucher/quick_print.php" class="menu"> <i class="fa fa-print"></i> Quick Print </a>
 <!--vouchers-->
 <a href="../voucher/voucher.php" class="menu"> <i class="fa fa-ticket"></i> Vouchers </a>
 <!--log-->
@@ -52,11 +53,11 @@ include('../include/head.html.php');
 <!--system-->
 <a href="../pages/server.php" class="menu"> <i class="fa fa-server"></i> Status </a>
 <!--billing-->
-<div class="dropdown-btn "><i class=" fa fa-credit-card"></i> Billing<i class="fa fa-caret-down"></i>
+<div class="dropdown-btn active"><i class="fa fa-credit-card"></i> Billing<i class="fa fa-caret-down"></i>
 </div>
 <div class="dropdown-container ">
-<a href="../billing/request.php" class=""> <i class="fa fa-plus-circle "></i> Topup Request </a>
-<a href="../billing/user.php" class=""> <i class="fa fa-user "></i> Client List </a>
+<a href="../billing/request.php" class="active"> <i class="fa fa-plus-circle"></i> Topup Request </a>
+<a href="../billing/user.php" class=""> <i class="fa fa-user"></i> Client List </a>
 </div>
 <!--report-->
 <a href="../hotspot/report.php" class="menu"><i class="nav-icon fa fa-money"></i> Report</a>
@@ -70,41 +71,62 @@ include('../include/head.html.php');
 <a href="../voucher/template.php" class="menu"> <i class="fa fa-edit"></i> Template Setting </a>          
 </div>
 <!--about-->
-<a href="../pages/about.php" class="menu "><i class="fa fa-info-circle"></i> About</a>
+<a href="../pages/about.php" class="menu"><i class="fa fa-info-circle"></i> About</a>
 </div>
 
-</div>
 <div id="main">  
-    <div id="loading" class="lds-dual-ring"></div>
-    <div class="main-container" style="display:none">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3><i class="fa fa-print"></i> Quick Print &nbsp;&nbsp; | &nbsp;&nbsp;<i onclick="location.reload();" class="fa fa-refresh pointer" title="Reload data"></i>
-                            <select class="dropd pd-5" id="prinMode">
-                                <option value="printTickets1.php" disabled selected>Select Ticket</option>
-                                <option value="printTickets1.php">Ticket 1</option>
-                                <option value="printTickets2.php">Ticket 2</option>
-                                <option value="printTickets3.php">Ticket 3</option>
-                                <option value="printTickets4.php">Ticket 4</option>
-                            </select>
-                        </h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="overflow" style="max-height: 80vh">    
-                            <div class="row" id="batch-container">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div id="loading" class="lds-dual-ring"></div>
+<div class="row">
+<div class="col-12">
+<div class="card">
+<div class="card-header">
+	<h3><i class=" fa fa-plus-circle"></i> Topup Request </h3>
 </div>
-<script src="../plugins/print.batch.js"></script>
+<div class="card-body">
+<div class="row">
+<div class="row">
+<div class="col-12">
+</div>
+<div class="overflow box-bordered" style="max-height: 70vh">
+<table id="dataTable" class="table table-bordered table-hover text-nowrap">
+<thead class="thead-light">
+<tr>
+  <th><center><?php echo "$total_request"; ?></th>
+  <th><center>Topup ID</th>
+  <th><center>Username</th>
+  <th><center>Whatsapp</th>
+  <th><center>Amount</th>
+  <th><center>Date</th>
+  </tr>
+</thead>
+<tbody>
+
+<?php
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td><center>
+            <i class='fa fa-close text-danger pointer'
+                onclick=\"reject('" . htmlspecialchars($row['id']) . "', '" . htmlspecialchars($row['username']) . "', '" . htmlspecialchars($row['whatsapp_number']) . "', '" . htmlspecialchars($row['amount']) . "')\"></i>&nbsp;&nbsp;
+            <i class='fa fa-check text-success pointer'
+                onclick=\"accept('" . htmlspecialchars($row['id']) . "', '" . htmlspecialchars($row['username']) . "', '" . htmlspecialchars($row['whatsapp_number']) . "', '" . htmlspecialchars($row['amount']) . "')\"></i>
+            </center></td>";
+        echo "<td><center>" . htmlspecialchars($row["id"]) . "</center></td>";
+        echo "<td><center>" . htmlspecialchars($row["username"]) . "</center></td>";
+        echo "<td><center>" . htmlspecialchars($row["whatsapp_number"]) . "</center></td>";
+        echo "<td><center>" . money($row["amount"]) . "</center></td>";
+        echo "<td><center>" . htmlspecialchars($row["date"]) . "</center></td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='6'><center>Tidak ada data</center></td></tr>";
+}
+
+$conn->close();
+?>
+
 <script src="../js/radmon-ui.<?php echo $theme; ?>.min.js"></script>
 <script src="../js/radmon.js"></script>
+<script src="../plugins/user.topup.js"></script>
 </body>
 </html>
-
