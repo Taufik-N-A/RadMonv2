@@ -36,21 +36,34 @@ $freq = htmlspecialchars($frequency);
 $temp = htmlspecialchars($temperature);
 
 function getMemoryInfo() {
-    $data = file_get_contents('/proc/meminfo');
-    $lines = explode("\n", trim($data));
+    $command = "awk 'BEGIN{Total=0;Free=0}$1~/^MemTotal:/{Total=$2}$1~/^MemFree:|^Buffers:|^Cached:/{Free+=$2}END{Used=Total-Free;printf\"%.0f\t%.0f\t%.1f\t%.0f\",Total*1024,Used*1024,(Total>0)?((Used/Total)*100):0,Free*1024}' /proc/meminfo 2>/dev/null";
+    $output = shell_exec($command);
 
-    $memInfo = [];
-    foreach ($lines as $line) {
-        if (preg_match('/^(\w+):\s+(\d+)\s+(\w+)/', $line, $matches)) {
-            $memInfo[$matches[1]] = [
-                'value' => (int)$matches[2],
-                'unit' => $matches[3]
-            ];
-        }
-    }
+    list($total, $used, $usedPercent, $free) = explode("\t", trim($output));
 
-    return $memInfo;
+    return [
+        'total' => (int)$total,
+        'used' => (int)$used,
+        'used_percent' => (float)$usedPercent,
+        'free' => (int)$free
+    ];
 }
+
+function convertMemory($bytes) {
+    if ($bytes >= 1024 * 1024 * 1024) {
+        $size = $bytes / (1024 * 1024 * 1024);
+        return round($size, 2) . " GiB";
+    } elseif ($bytes >= 1024 * 1024) {
+        $size = $bytes / (1024 * 1024);
+        return round($size, 2) . " MiB";
+    } else {
+        $size = $bytes / 1024;
+        return round($size, 2) . " KiB";
+    }
+}
+
+$memoryInfo = getMemoryInfo();
+$freeMemory = convertMemory($memoryInfo['free']);
 
 function calculatePercentage($part, $total) {
     if ($total == 0) {
@@ -68,11 +81,6 @@ function convertToMBandGB($valueInKB) {
         'GB' => $valueInGB
     ];
 }
-
-$memoryInfo = getMemoryInfo();
-
-$totalMemory = convertToMBandGB($memoryInfo['MemTotal']['value']);
-$freeMemory = convertToMBandGB($memoryInfo['MemFree']['value']);
 
 function formatMemory($valueInMB) {
     if ($valueInMB < 1024) {
