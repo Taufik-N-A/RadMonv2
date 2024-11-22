@@ -114,7 +114,7 @@ include ("../backend/auth_log.php");
               <div class="box-group-area">
                 <span >
                     CPU Load : <span id="cpu-load"><?php echo $cpuValue; ?>%</span> Temp : <?php echo "$temp"; ?><br/>
-                    Free Memory : <?php echo formatMemory($freeMemory['MB']); ?><br/>
+                    Free Memory : <?php echo $freeMemory; ?><br/>
                     Free HDD : <?php echo "$freehdd"; ?><br/>
                 </div>
               </div>
@@ -254,4 +254,3 @@ include ("../backend/auth_log.php");
 <script src="../plugins/dash.load.js" defer></script>
 </body>
 </html>
-
