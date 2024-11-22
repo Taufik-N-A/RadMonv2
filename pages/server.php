@@ -114,7 +114,7 @@ include ("../backend/ipinfo.php");
                 <i class="fa fa-server"></i>
               </div>
               <div class="box-group-area">
-                <span> CPU Load : <span id="cpu-"> <?php echo $cpuValue; ?>% </span> Temp : <?php echo "$temp"; ?> <br /> Free Memory : <?php echo formatMemory($freeMemory['MB']); ?><br/> Free HDD : <?php echo "$freehdd"; ?> <br />
+                <span> CPU Load : <span id="cpu-"> <?php echo $cpuValue; ?>% </span> Temp : <?php echo "$temp"; ?> <br /> Free Memory : <?php echo $freeMemory; ?><br/> Free HDD : <?php echo "$freehdd"; ?> <br />
               </div>
             </div>
           </div>
@@ -201,4 +201,3 @@ include ("../backend/ipinfo.php");
     <script>window.onload=function(){const host='google.com';const resultDiv=document.getElementById('result');resultDiv.innerHTML='Check Ping...';fetch(`../backend/check_ping.php?host=${host}`) .then(response=>response.json()) .then(data=>{const packetLoss=data.packetLoss;const avgTime=data.avgTime;resultDiv.innerHTML=` Host : ${host}<br>Loss : ${packetLoss}%<br>Time : ${avgTime}ms `}) .catch(error=>{resultDiv.innerHTML='Ping failed.'})};</script>
 </body>
 </html>
-
