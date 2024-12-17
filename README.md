@@ -5,19 +5,15 @@
 </div>
 
 <div align="center">
-  <img alt="License" src="https://img.shields.io/github/license/Maizil41/RadMonv2?style=for-the-badge&logo=github">
-  <a target="_blank" href="https://github.com/Maizil41/RadMonv2/releases"><img src="https://img.shields.io/badge/Version-2.0--beta-blue?style=for-the-badge&logo=github"></a>
-  <a target="_blank" href="https://github.com/Maizil41/RadMonv2/releases"><img src="https://img.shields.io/github/downloads/Maizil41/RadMonv2/total?style=for-the-badge&logo=github"></a>
+  <img alt="License" src="https://img.shields.io/github/license/Taufik_N_A/RadMonv2?style=for-the-badge&logo=github">
+  <a target="_blank" href="https://github.com/Taufik_N_A/RadMonv2/releases"><img src="https://img.shields.io/badge/Version-2.0--beta-blue?style=for-the-badge&logo=github"></a>
+  <a target="_blank" href="https://github.com/Taufik_N_A/RadMonv2/releases"><img src="https://img.shields.io/github/downloads/Taufik_N_A/RadMonv2/total?style=for-the-badge&logo=github"></a>
 </div>
 <hr>
 
 <p align="center">
-<a href="https://saweria.co/mutiarawrt"><img src="https://img.shields.io/badge/Donation-FFAE00?style=for-the-badge&logo=ko-fi&logoColor=white"></a>
-
-<p align="center">
-<a href="https://t.me/mutiarawrt"><img src="https://img.shields.io/badge/Telegram--Channel-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"></a>
-<a href="https://www.youtube.com/@mutiara-wrt"><img src="https://img.shields.io/badge/Youtube--Channel-e02c2c?style=for-the-badge&logo=youtube&logoColor=white"></a>
-<a href="https://t.me/mutiara_wrt"><img src="https://img.shields.io/badge/Telegram--Groups-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"></a>
+<a href="https://t.me/Taufik_N_A"><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"></a>
+<a href="https://fb.me/taufiknurohman.afiko"><img src="https://img.shields.io/badge/Facebook-blue?style=for-the-badge&logo=facebook&logoColor=white"></a>
 </p>
 
 <hr/>
