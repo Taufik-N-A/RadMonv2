@@ -5,9 +5,9 @@
 </div>
 
 <div align="center">
-  <img alt="License" src="https://img.shields.io/github/license/Taufik_N_A/RadMonv2?style=for-the-badge&logo=github">
-  <a target="_blank" href="https://github.com/Taufik_N_A/RadMonv2/releases"><img src="https://img.shields.io/badge/Version-2.0--beta-blue?style=for-the-badge&logo=github"></a>
-  <a target="_blank" href="https://github.com/Taufik_N_A/RadMonv2/releases"><img src="https://img.shields.io/github/downloads/Taufik_N_A/RadMonv2/total?style=for-the-badge&logo=github"></a>
+  <img alt="License" src="https://img.shields.io/github/license/Taufik-N-A/RadMonv2?style=for-the-badge&logo=github">
+  <a target="_blank" href="https://github.com/Taufik-N-A/RadMonv2/releases"><img src="https://img.shields.io/badge/Version-2.0--beta-blue?style=for-the-badge&logo=github"></a>
+  <a target="_blank" href="https://github.com/Taufik-N-A/RadMonv2/releases"><img src="https://img.shields.io/github/downloads/Taufik-N-A/RadMonv2/total?style=for-the-badge&logo=github"></a>
 </div>
 <hr>
 
